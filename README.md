@@ -11,6 +11,4 @@ This memory allocator will prompt you for a file to store the allocated memory i
 - I'm probably going to work on this *a little bit more* to add some quality-of-life features, but that's it. It's a shitpost, not a serious library.
 
 ## (old) Demo
-[![Watch da video](https://va.media.tumblr.com/tumblr_rx50dp1oHg1u2bku9_720.mp4)]
-
-(i have no idea if this video embed thing works lol)
+https://github.com/shadyfennec/stupidalloc/assets/68575248/f2490dc1-8412-4450-9359-7387f79682ea

@@ -4,8 +4,9 @@ use stupidalloc::StupidAlloc;
 static GLOBAL: StupidAlloc = StupidAlloc;
 
 fn main() {
-    let v = Box::new(Vec::<u8>::with_capacity(1000));
+    let boxed_vec = Box::new(vec![1, 2, 3]);
 
-    let file = StupidAlloc.file_of(&*v).unwrap();
-    println!("{file:?}");
+    println!("{}", StupidAlloc.file_of(&*boxed_vec).unwrap().display());
+
+    // Somehow pause execution
 }

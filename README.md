@@ -1,5 +1,5 @@
 # Stupid alloc - what if memory allocation was annoying
-Mostly a weird exercise in how much you can make a memory allocator suck balls.
+Mostly a weird exercise in how much you can make a memory allocator suck.
 
 This allocator will create and open files to use as the allocation's data, through a memory map. If you enable the `interactive` feature, it will even prompt you for a file name every time
 the program allocates something! Cool!
@@ -9,15 +9,25 @@ the program allocates something! Cool!
 don't
 
 ## No but really how does one use this
-It's not on [crates.io](https://crates.io) (yet), so if you **really** want to use it, clone the repo and use it as a local dependency. Note that you must be using nightly Rust.
+Using `cargo add`:
+
+```shell
+cargo add stupidalloc
+```
+
+Manually specifying the dependency in `Cargo.toml`:
 
 ```toml
 [dependencies]
-stupidalloc = { path = "/where/the/repo/is/stupidalloc" }
+stupidalloc = { version = "0.1.0" }
 ```
 
-Afterwards, you have a few options:
-- You can use it as the global allocator of your program, but it may lead to wonkiness and weird stuff like allocating before `main()` is executed!
+### The `interactive` feature
+The crate comes with a feature, `interactive`, that will open confirmation and file picker dialog windows instead of silently opening and allocating memory. Enable it at your own risk,
+as sometimes dialogs are unavailable. This crate uses [`native-dialog`](https://crates.io/crates/native-dialog) for this feature.
+
+## Using the allocator
+- You can use it as the global allocator of your program, but it may lead to wonkiness and weird stuff like prompting for allocations before `main()` is executed!
 
 ```rust
 use stupidalloc::StupidAlloc;

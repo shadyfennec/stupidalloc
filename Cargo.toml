@@ -1,5 +1,6 @@
 [package]
 authors = ["shadyfennec"]
+categories = ["memory-management"]
 description = "A stupid memory allocator that memory-maps allocations to files."
 edition = "2021"
 keywords = ["allocator", "memory"]

@@ -70,6 +70,33 @@ fn main() {
 }
 ```
 
+Another cool usage is to be able to see how stuff is laid out in memory, without
+having to use memory viewers or complicated GDB syntax!
+
+For example, ever wanted to see how a `Vec<T>` is organised in memory?
+
+```rust
+use stupidalloc::StupidAlloc;
+
+#[global_allocator]
+static GLOBAL: StupidAlloc = StupidAlloc;
+
+fn main() {
+    let boxed_vec = Box::new(vec![1, 2, 3]);
+
+    println!("{}", StupidAlloc.file_of(&*boxed_vec).display());
+
+    // Somehow pause execution
+}
+```
+
+This program will print the path of the allocation file for the `Vec<T>` struct
+(and not the allocation for the data of the `Vec`, because then we'd only see
+the numbers 1, 2, 3!). Open it in a hex viewer, and you can try and guess what
+each field is, and try to corroborate it with the [struct's definition](https://doc.rust-lang.org/stable/std/vec/struct.Vec.html).
+If your system allows you to (I know Windows can be a bit restrictive), try and 
+modify the length and/or capacity fields and see what happens afterwards!
+
 ## Disclaimers
 - If you don't have file picker / file dialog capabilities (minimal i3 installation, TTY-only, ...), `interactivity` won't work. 
 - I only tested this on Windows and Linux. If it doesn't work on MacOS or any other OS, sorry. If it doesn't work for you on Windows or Linux: weird! Hit me up.

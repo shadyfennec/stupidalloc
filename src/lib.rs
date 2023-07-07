@@ -2,7 +2,7 @@
 //!
 //! # Behaviour
 //! This [`Allocator`] will create, open and use a file for every single allocation
-//! performed through it. Obviously, doing this necessitates to allocate stuff,
+//! performed through it. Obviously, doing this imples allocating stuff,
 //! which is kind of problematic. So, as a fallback, this allocator uses
 //! [`System`] when allocating during a memory allocation or de-allocation.
 //!
@@ -18,6 +18,11 @@
 //! - On de-allocation, a confirmation message showing the address of the thing
 //!   that was de-allocated shows up. It doesn't matter how it is handled,
 //!   the de-allocation won't fail because of it.
+//!
+//! ## Multi-threading
+//! Internally, the allocator uses a [`Mutex`] when allocating and de-allocating.
+//! As such, using this in a multi-threaded context will yield even more awful
+//! performance. Performance is not the goal, but be warned nonetheless.
 //!
 //! # Usage example
 //! Use the allocator for a few items while keeping the global normal allocator

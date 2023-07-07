@@ -98,6 +98,7 @@ If your system allows you to (I know Windows can be a bit restrictive), try and
 modify the length and/or capacity fields and see what happens afterwards!
 
 ## Disclaimers
+- I do not claim that this library is perfect and free of any fault. Here there be typos and mistakes and examples that I didn't test and don't work. Send an issue if something's wrong!
 - If you don't have file picker / file dialog capabilities (minimal i3 installation, TTY-only, ...), `interactivity` won't work. 
 - I only tested this on Windows and Linux. If it doesn't work on MacOS or any other OS, sorry. If it doesn't work for you on Windows or Linux: weird! Hit me up.
 - If you mess with the memory files in any way you'll mess up with your program memory, but seeing as this is topologically the same as messing with `/proc/mem` I consider this a cool feature.

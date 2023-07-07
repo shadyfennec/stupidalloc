@@ -5,6 +5,9 @@ This is more of a proof of concept than a fully standalone library (and i don't 
 
 This memory allocator will prompt you for a file to store the allocated memory in. The memory will indeed be stored in the file (as a memory-map), and be deleted when free'd (you also get a little message when that happens).
 
+## How to use it
+don't
+
 ## Disclaimers
 - I only tested this on Windows; if it doesn't work on MacOS or Linux, message me and i'll **maybe** look into it (probably not for MacOS I don't have one)
 - If you mess with the memory files in any way you'll mess up with your program memory, but seeing as this is topologically the same as messing with `/proc/mem` I consider this a cool feature.

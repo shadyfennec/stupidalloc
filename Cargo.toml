@@ -5,7 +5,10 @@ version = "0.1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+interactive = ["native-dialog"]
+
 [dependencies]
 lazy_static = "1.4.0"
 memmap2 = "0.7.1"
-native-dialog = {version = "0.6.4", features = ["windows_dpi_awareness", "windows_visual_styles"]}
+native-dialog = {version = "0.6.4", optional = true, features = ["windows_dpi_awareness", "windows_visual_styles"]}

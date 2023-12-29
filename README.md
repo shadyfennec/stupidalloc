@@ -33,6 +33,8 @@ Additionally, the `always-graphics` feature enables graphical windows for every 
 
 Graphical windows are created using the [`minifb`](https://crates.io/crates/minifb) crate.
 
+https://github.com/shadyfennec/stupidalloc/assets/68575248/b19790c7-bc9e-4a59-99c9-18d7e308739e
+
 ### Logging
 The `logging` crate creates companion logging files that record useful information about each allocation, using the familiar Markdown format. Useful for debugging!
 

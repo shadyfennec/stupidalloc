@@ -19,12 +19,22 @@ Manually specifying the dependency in `Cargo.toml`:
 
 ```toml
 [dependencies]
-stupidalloc = { version = "0.1.0" }
+stupidalloc = { version = "0.2.0" }
 ```
 
 ### The `interactive` feature
 The crate comes with a feature, `interactive`, that will open confirmation and file picker dialog windows instead of silently opening and allocating memory. Enable it at your own risk,
 as sometimes dialogs are unavailable. This crate uses [`native-dialog`](https://crates.io/crates/native-dialog) for this feature.
+
+### Graphical interface
+The `graphics` feature creates graphical windows that display memory contents as black or white pixels, representing the bits of the allocations! Click on each pixel to either set the bit (left click) or clear the bit (right click). You can easily modify memory contents this way!
+
+Additionally, the `always-graphics` feature enables graphical windows for every single new allocation performed, and not just creation on-demand by the user.
+
+Graphical windows are created using the [`minifb`](https://crates.io/crates/minifb) crate.
+
+### Logging
+The `logging` crate creates companion logging files that record useful information about each allocation, using the familiar Markdown format. Useful for debugging!
 
 ## Using the allocator
 - You can use it as the global allocator of your program, but it may lead to wonkiness and weird stuff like prompting for allocations before `main()` is executed!
@@ -110,6 +120,7 @@ modify the length and/or capacity fields and see what happens afterwards!
 ## Disclaimers
 - I do not claim that this library is perfect and free of any fault. Here there be typos and mistakes and examples that I didn't test and don't work. Send an issue if something's wrong!
 - If you don't have file picker / file dialog capabilities (minimal i3 installation, TTY-only, ...), `interactivity` won't work. 
+- Similarly, if you don't have a graphical environment altogether, `graphics` and `always-graphics` won't work either.
 - I only tested this on Windows and Linux. If it doesn't work on MacOS or any other OS, sorry. If it doesn't work for you on Windows or Linux: weird! Hit me up.
 - If you mess with the memory files in any way you'll mess up with your program memory, but seeing as this is topologically the same as messing with `/proc/mem` I consider this a cool feature.
 - I'm probably going to work on this *a little bit more* to add some quality-of-life features, but that's it. It's a shitpost, not a serious library.

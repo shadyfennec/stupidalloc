@@ -40,6 +40,27 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'graphics'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=graphics",
+                    "--package=stupidalloc"
+                ],
+                "filter": {
+                    "name": "graphics",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "RUST_BACKTRACE": "1"
+            }
         }
     ]
 }

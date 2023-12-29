@@ -8,12 +8,21 @@ license = "MIT OR Apache-2.0"
 name = "stupidalloc"
 readme = "README.md"
 repository = "https://github.com/shadyfennec/stupidalloc"
-version = "0.1.0"
+version = "0.2.0"
+
+[package.metadata.docs.rs]
+all-features = true
 
 [features]
+always-graphics = ["graphics"]
+graphics = ["minifb"]
 interactive = ["native-dialog"]
+logging = []
 
 [dependencies]
+allocator-api2 = "0.2.16"
+hashbrown = {version = "0.14.3", features = ["ahash", "inline-more"]}
 lazy_static = "1.4.0"
 memmap2 = "0.7.1"
+minifb = {version = "0.25", optional = true}
 native-dialog = {version = "0.6.4", optional = true, features = ["windows_dpi_awareness", "windows_visual_styles"]}

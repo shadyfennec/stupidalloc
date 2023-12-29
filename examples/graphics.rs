@@ -10,6 +10,8 @@ fn main() {
 
     let mut string = String::with_capacity(16);
 
+    println!("Type what you want below, it will be echoed back to you!");
+
     std::io::stdin().lock().read_to_string(&mut string).unwrap();
 
     println!("{string}");
@@ -17,5 +19,5 @@ fn main() {
 
 #[cfg(not(feature = "always-graphics"))]
 fn main() {
-    eprintln!("This example is made to showcase the graphical display of stupidalloc. Running it without the `always-graphical` feature is useless.");
+    eprintln!("This example is made to showcase the graphical display of stupidalloc. Running it without the `always-graphics` feature is useless.");
 }

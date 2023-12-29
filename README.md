@@ -19,7 +19,7 @@ Manually specifying the dependency in `Cargo.toml`:
 
 ```toml
 [dependencies]
-stupidalloc = { version = "0.2.0" }
+stupidalloc = { version = "0.2.1" }
 ```
 
 ### The `interactive` feature

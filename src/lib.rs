@@ -679,7 +679,19 @@ unsafe impl Allocator for StupidAlloc {
                 // if there is a window, we need to destroy that first
                 if let Some(window) = handle.window {
                     window.tx.send(graphics::Message::Free).unwrap();
-                    window.close();
+                    // originally i wanted to join the thread of the window
+                    // because that's what good people do, but since de-allocation
+                    // after main has ended means the threads were already killed,
+                    // we run into a weird issue where join panics because
+                    // its thread has been sweeped under itself and killed
+                    // without its consent. so for now, until i find a good way
+                    // of properly join a thread after main, let's just leave
+                    // them be. they're all going to terminate because of the
+                    // free message anyways.
+                    //
+                    // FIXME: find a way to join a thread even when it has been
+                    //        killed by the end of process function.
+                    //window.close();
                 }
             }
 

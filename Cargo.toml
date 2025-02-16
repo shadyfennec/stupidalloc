@@ -8,7 +8,7 @@ license = "MIT OR Apache-2.0"
 name = "stupidalloc"
 readme = "README.md"
 repository = "https://github.com/shadyfennec/stupidalloc"
-version = "0.2.1"
+version = "0.2.2"
 
 [package.metadata.docs.rs]
 all-features = true

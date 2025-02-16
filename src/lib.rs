@@ -396,10 +396,10 @@ impl StupidAlloc {
                             .unwrap();
 
                         file.set_len(layout.size() as u64).unwrap();
-                        let map = unsafe { MmapOptions::new().map_mut(&file).unwrap() };
+                        let mut map = unsafe { MmapOptions::new().map_mut(&file).unwrap() };
 
                         let ptr = NonNull::from_raw_parts(
-                            NonNull::new(map.as_ptr() as _).unwrap(),
+                            NonNull::new(map.as_mut_ptr() as *mut ()).unwrap(),
                             layout.size(),
                         );
 
@@ -511,7 +511,7 @@ impl StupidAlloc {
             handle.file.set_len(new_layout.size() as u64).unwrap();
 
             // new memory mapping to reflect new size.
-            let map = unsafe {
+            let mut map = unsafe {
                 MmapOptions::new()
                     .map_mut(&handle.file as &File /* thanks, memmap2 (sarcasm) */)
                     .unwrap()
@@ -541,7 +541,7 @@ impl StupidAlloc {
             };
 
             let ptr = NonNull::from_raw_parts(
-                NonNull::new(map.as_ptr() as _).unwrap(),
+                NonNull::new(map.as_mut_ptr() as *mut ()).unwrap(),
                 new_layout.size(),
             );
 
